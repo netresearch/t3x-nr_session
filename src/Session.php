@@ -415,11 +415,53 @@ class Session extends \tslib_feUserAuth
      * Creates a new session ID.
      *
      * @return	string		The new session ID
-     * @todo Check generated Session ID against existing Session IDs
      */
     public function createSessionId()
     {
-        return parent::createSessionId();
+        $isSessionIdClean = false;
+        $nRetries         = 0;
+
+        do {
+            if ($nRetries > 1) {
+                // we retry only 1 time - throwing the exception gives the system
+                // some time to get more healthy and generate new clean session ids
+                \t3lib_div::devLog(
+                    'Could not get secure and empty session id.',
+                    'nr_session',
+                    \t3lib_div::SYSLOG_SEVERITY_ERROR
+                );
+                throw new \RuntimeException(
+                    'Could not get secure and empty session id.'
+                );
+            }
+
+            $strSessionId = parent::createSessionId();
+
+            /** @var \t3lib_lock $lock */
+            $lock = \t3lib_div::makeInstance('t3lib_lock', $strSessionId);
+
+            if ($lock->acquire()) {
+                // acquire returns true for immediately retrieved locks
+                // means no other process held the lock before
+                if ($this->cache()->has($strSessionId)) {
+                    // there is already session data associated with this session id
+                    // so we mark this id as dirty
+                    $isSessionIdClean = false;
+                } else {
+                    // there is no other data associated with this session id
+                    // - try another session id
+                    $isSessionIdClean = true;
+                }
+            } else {
+                // could not get lock, or not immediately - so it is unlikely
+                // this session data is clean - try another session id
+                $isSessionIdClean = false;
+            }
+            $lock->release();
+            $nRetries++;
+        } while (false === $isSessionIdClean);
+
+        return $strSessionId;
     }
 }
 
