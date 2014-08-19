@@ -41,5 +41,5 @@ Name of the used caching configuration is 'nr_session'::
 
  $arCacheCfg = &$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
  $arCacheCfg['nr_session'] = $arCacheCfg['default'];
- $arCacheCfg['nr_session']['frontend'] = '\t3lib_cache_frontend_StringFrontend';
+ $arCacheCfg['nr_session']['frontend'] = '\t3lib_cache_frontend_VariableFrontend';
 

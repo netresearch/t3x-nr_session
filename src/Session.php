@@ -30,7 +30,7 @@ class Session extends \tslib_feUserAuth
 {
 
     /**
-     * @var \t3lib_cache_frontend_StringFrontend.
+     * @var \t3lib_cache_frontend_VariableFrontend.
      */
     var $cache = null;
 
