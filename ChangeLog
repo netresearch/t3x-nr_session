@@ -1,0 +1,4 @@
+2014-08-19  Sebastian Mendel  <sebastian.mendel@netresearch.de>
+
+	* TYPO-2741: outsource session handling into own extension nr_session
+

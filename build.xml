@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project default="build" basedir=".">
+
+        <resolvepath propertyName="nr_testing" file="${phing.dir}/../nr_testing"/>
+
+        <import file="${nr_testing}/build.xml" />
+
+</project>
