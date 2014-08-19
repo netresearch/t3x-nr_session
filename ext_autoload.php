@@ -9,7 +9,7 @@ declare(encoding = 'UTF-8');
  * @category   Netresearch
  * @package    Session
  * @subpackage Configuration
- * @author     Andre Hähnel <andre.haehnel@netresearch.de>
+ * @author     Sebastian Mendel <sebastian.mendel@netresearch.de>
  * @license    http://www.aida.de AIDA Copyright
  * @link       http://www.aida.de
  */
