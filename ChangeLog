@@ -1,3 +1,7 @@
+2014-08-21  Sebastian Mendel  <sebastian.mendel@netresearch.de>
+
+	* Version: 1.0.0
+
 2014-08-19  Sebastian Mendel  <sebastian.mendel@netresearch.de>
 
 	* TYPO-2741: ensure newly generated session id is not in use already

@@ -12,7 +12,7 @@ scalable session data storage.
 
 .. BEGIN ext_emconf.php
 
-:Version live: `1.0.3 <http://urgit11.aida.de/typo3/nr_cache/tree/v1.0.3>`_
+:Version live: `1.0.0 <http://urgit11.aida.de/typo3/nr_session/tree/v1.0.0>`_
 :Company: Netresearch GmbH & Co.KG
 :Author: | `Sebastian Mendel <~mendel.sebastian>`_
 
