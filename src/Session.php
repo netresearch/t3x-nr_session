@@ -437,7 +437,9 @@ class Session extends \tslib_feUserAuth
             $strSessionId = parent::createSessionId();
 
             /** @var \t3lib_lock $lock */
-            $lock = \t3lib_div::makeInstance('t3lib_lock', $strSessionId);
+            $lock = \t3lib_div::makeInstance(
+                't3lib_lock', $strSessionId, 'simple'
+            );
 
             if ($lock->acquire()) {
                 // acquire returns true for immediately retrieved locks
