@@ -451,6 +451,16 @@ class Session extends \tslib_feUserAuth
                 } else {
                     // there is no other data associated with this session id
                     $isSessionIdClean = true;
+
+                    // create a cache entry for this session
+                    $this->cache()->set(
+                        $strSessionId,
+                        array(
+                            'meta'    => $this->arMeta,
+                            'content' => $this->sesData,
+                            'tstamp'  => $GLOBALS['EXEC_TIME'],
+                        )
+                    );
                 }
             } else {
                 // could not get lock, or not immediately - so it is unlikely
