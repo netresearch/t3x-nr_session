@@ -37,9 +37,46 @@ Configuration
 =============
 
 Session storage is configured like any other caching framework configuration.
-Name of the used caching configuration is 'nr_session'::
+Name of the used caching configuration is 'nr_session'
 
- $arCacheCfg = &$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
- $arCacheCfg['nr_session'] = $arCacheCfg['default'];
- $arCacheCfg['nr_session']['frontend'] = '\t3lib_cache_frontend_VariableFrontend';
+TYPO3 4.6
+---------
 
+::
+
+    $arCacheCfg = &$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
+    $arCacheCfg['nr_session'] = array(
+        'backend'  => '\t3lib_cache_backend_RedisBackend',
+        'frontend' => '\t3lib_cache_frontend_VariableFrontend',
+        'options'  => array(
+            'hostname'         => 'my.redis.host',
+            //'port'             => 6379,
+            'database'         => 0,
+            //'password'         => '',
+            //'compression'      => false,
+            //'compressionLevel' => 1,
+        ),
+    );
+
+TYPO3 4.5
+---------
+
+::
+
+    $arCacheCfg = &$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
+    $arCacheCfg['nr_session'] = array(
+        'backend'  => 't3lib_cache_backend_RedisBackend',
+        'frontend' => 't3lib_cache_frontend_VariableFrontend',
+        'options'  => array(
+            'hostname'         => 'my.redis.host',
+            //'port'             => 6379,
+            'database'         => 0,
+            //'password'         => '',
+            //'compression'      => false,
+            //'compressionLevel' => 1,
+        ),
+    );
+
+You also need to set up your caching framework:
+
+- http://wiki.typo3.org/Caching_framework#Enable_caching_framework_in_TYPO3_4.5_and_below
