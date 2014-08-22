@@ -401,9 +401,27 @@ class Session extends \tslib_feUserAuth
         /** @var \t3lib_cache_Manager $typo3CacheManager */
         global $typo3CacheManager;
 
-        $this->cache = $typo3CacheManager->getCache(
-            'nr_session'
-        );
+        \t3lib_cache::initializeCachingFramework();
+
+        try {
+            $this->cache = $typo3CacheManager->getCache(
+                'nr_session'
+            );
+        } catch (\t3lib_cache_exception_NoSuchCache $e) {
+            /** @var array[] $TYPO3_CONF_VARS */
+            global $TYPO3_CONF_VARS;
+            $arCacheConfigurations
+                = $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
+
+            /** @var \t3lib_cache_Factory $typo3CacheFactory */
+            global $typo3CacheFactory;
+            $this->cache = $typo3CacheFactory->create(
+                'nr_session',
+                $arCacheConfigurations['nr_session']['frontend'],
+                $arCacheConfigurations['nr_session']['backend'],
+                $arCacheConfigurations['nr_session']['options']
+            );
+        }
 
         return $this->cache;
     }
