@@ -8,15 +8,7 @@ Overview
 ========
 
 Alternative session handler. Provides an interface to a more secure, faster and
-scalable session data storage.
-
-.. BEGIN ext_emconf.php
-
-:Version live: `1.0.0 <http://urgit11.aida.de/typo3/nr_session/tree/v1.0.0>`_
-:Company: Netresearch GmbH & Co.KG
-:Author: | `Sebastian Mendel <~mendel.sebastian>`_
-
-.. END ext_emconf.php
+scalable session data storage. And more secure session id handling.
 
 Features
 ========
@@ -37,45 +29,49 @@ Configuration
 =============
 
 Session storage is configured like any other caching framework configuration.
-Name of the used caching configuration is 'nr_session'
+Name of the used caching configuration is 'nr_session'.
 
-TYPO3 4.6
----------
+You need to set up the nr_session storage configuration in your localconf.php:
+
+(Example for use with Redis)
+
+TYPO3 4.6 - 6.2
+---------------
 
 ::
 
-    $arCacheCfg = &$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
-    $arCacheCfg['nr_session'] = array(
-        'backend'  => '\t3lib_cache_backend_RedisBackend',
-        'frontend' => '\t3lib_cache_frontend_VariableFrontend',
-        'options'  => array(
-            'hostname'         => 'my.redis.host',
-            //'port'             => 6379,
-            'database'         => 0,
-            //'password'         => '',
-            //'compression'      => false,
-            //'compressionLevel' => 1,
-        ),
-    );
+    $GLOBALS['$TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
+        ['nr_session'] = array(
+            'backend'  => '\t3lib_cache_backend_RedisBackend',
+            'frontend' => '\t3lib_cache_frontend_VariableFrontend',
+            'options'  => array(
+                'hostname'         => 'my.redis.host',
+                //'port'             => 6379,
+                'database'         => 0,
+                //'password'         => '',
+                //'compression'      => false,
+                //'compressionLevel' => 1,
+            ),
+        );
 
 TYPO3 4.5
 ---------
 
 ::
 
-    $arCacheCfg = &$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations'];
-    $arCacheCfg['nr_session'] = array(
-        'backend'  => 't3lib_cache_backend_RedisBackend',
-        'frontend' => 't3lib_cache_frontend_VariableFrontend',
-        'options'  => array(
-            'hostname'         => 'my.redis.host',
-            //'port'             => 6379,
-            'database'         => 0,
-            //'password'         => '',
-            //'compression'      => false,
-            //'compressionLevel' => 1,
-        ),
-    );
+    $GLOBALS['$TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
+        ['nr_session'] = array(
+            'backend'  => 't3lib_cache_backend_RedisBackend',
+            'frontend' => 't3lib_cache_frontend_VariableFrontend',
+            'options'  => array(
+                'hostname'         => 'my.redis.host',
+                //'port'             => 6379,
+                'database'         => 0,
+                //'password'         => '',
+                //'compression'      => false,
+                //'compressionLevel' => 1,
+            ),
+        );
 
 You also need to set up your caching framework:
 

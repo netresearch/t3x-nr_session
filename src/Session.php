@@ -338,6 +338,9 @@ class Session extends \tslib_feUserAuth
                 'tstamp'  => $GLOBALS['EXEC_TIME'],
             )
         );
+
+        $this->setSessionCookie();
+
         $this->sesData_change = false;
     }
 
