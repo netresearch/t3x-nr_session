@@ -444,7 +444,7 @@ class Session extends \tslib_feUserAuth
             if ($lock->acquire()) {
                 // acquire returns true for immediately retrieved locks
                 // means no other process held the lock before
-                if ($this->cache()->has($strSessionId)) {
+                if ($this->isExistingSessionRecord($strSessionId)) {
                     // there is already session data associated with this session id
                     // so we mark this id as dirty
                     $isSessionIdClean = false;
