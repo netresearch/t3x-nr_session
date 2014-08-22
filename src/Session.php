@@ -450,12 +450,11 @@ class Session extends \tslib_feUserAuth
                     $isSessionIdClean = false;
                 } else {
                     // there is no other data associated with this session id
-                    // - try another session id
                     $isSessionIdClean = true;
                 }
             } else {
                 // could not get lock, or not immediately - so it is unlikely
-                // this session data is clean - try another session id
+                // this session data is clean
                 $isSessionIdClean = false;
             }
             $lock->release();
