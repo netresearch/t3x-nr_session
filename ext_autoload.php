@@ -10,8 +10,8 @@ declare(encoding = 'UTF-8');
  * @package    Session
  * @subpackage Configuration
  * @author     Sebastian Mendel <sebastian.mendel@netresearch.de>
- * @license    http://www.aida.de AIDA Copyright
- * @link       http://www.aida.de
+ * @license    AGPL http://www.netresearch.de/
+ * @link       http://www.netresearch.de/
  */
 
 defined('TYPO3_MODE') or die('Access denied.');
