@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "nr_session".
  *
- * Auto generated 21-08-2014 10:37
+ * Auto generated 25-08-2014 07:57
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -30,8 +30,8 @@ $EM_CONF[$_EXTKEY] = array(
 		),
 	),
 	'state' => 'stable',
-	'version' => '1.0.0',
-	'_md5_values_when_last_written' => 'a:7:{s:9:"build.xml";s:4:"3f95";s:9:"ChangeLog";s:4:"92a7";s:16:"ext_autoload.php";s:4:"8487";s:12:"ext_icon.gif";s:4:"a459";s:17:"ext_localconf.php";s:4:"dd7e";s:10:"README.rst";s:4:"8e77";s:15:"src/Session.php";s:4:"53f5";}',
+	'version' => '2.0.0',
+	'_md5_values_when_last_written' => 'a:7:{s:9:"build.xml";s:4:"3f95";s:9:"ChangeLog";s:4:"0b9d";s:16:"ext_autoload.php";s:4:"8487";s:12:"ext_icon.gif";s:4:"a459";s:17:"ext_localconf.php";s:4:"4f92";s:10:"README.rst";s:4:"b4fb";s:15:"src/Session.php";s:4:"c181";}',
 );
 
 ?>
